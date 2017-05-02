@@ -20,7 +20,7 @@
 <user-mapping>
 	
     <!-- Per-user authentication and config information -->
-    <authorize username="USERNAME" password="PASSWORD">
+    <authorize username="admin" password="admin">
         <protocol>vnc</protocol>
         <param name="hostname">localhost</param>
         <param name="port">5900</param>
