@@ -208,13 +208,14 @@ public abstract class GuacamoleHTTPTunnelServlet extends HttpServlet {
 
             // If connect operation, call doConnect() and return tunnel UUID
             // in response.
-            if (query.equals("connect")) {
+            if (query.startsWith("connect")) {
 
                 GuacamoleTunnel tunnel = doConnect(request);
                 if (tunnel != null) {
 
                     // Register newly-created tunnel
                     registerTunnel(tunnel);
+
 
                     try {
                         // Ensure buggy browsers do not cache response
@@ -324,7 +325,6 @@ public abstract class GuacamoleHTTPTunnelServlet extends HttpServlet {
 
         // Obtain exclusive read access
         GuacamoleReader reader = tunnel.acquireReader();
-
         try {
 
             // Note that although we are sending text, Webkit browsers will
@@ -458,7 +458,6 @@ public abstract class GuacamoleHTTPTunnelServlet extends HttpServlet {
 
         // Send data
         try {
-
             // Get writer from tunnel
             GuacamoleWriter writer = tunnel.acquireWriter();
 
